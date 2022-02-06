@@ -1,21 +1,17 @@
 from argparse import ArgumentError
 
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String, ForeignKey, Table
 
 from app.database import Base
 
 from .base_model import BaseModel
 
 
-class ForumModel(Base, BaseModel):
+class TagModel(Base, BaseModel):
+    __tablename__ = "tags"
 
-    __tablename__ = "forum"
-
-    title = Column(String(64))
-    descrciption = Column(String(250))
-
-    replies = relationship("ReplyModel", backref="forum", lazy=True)
+    name = Column(String(64))
+    description = Column(String(264))
 
     def __init__(self, schema):
         if not isinstance(schema, dict):

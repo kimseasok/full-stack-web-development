@@ -1,11 +1,13 @@
-from flask import Flask
+from flask import Flask, Blueprint
 
-from .routes import user_route
+from app.routes import *
 
 app = Flask(__name__)
 
+all_routes = [route for name, route in globals().items() if isinstance(route, Blueprint)]
+for route in all_routes:
+    app.register_blueprint(route)
 
-app.register_blueprint(user_route)
 
 def app_factory(app, config=None, with_db=False):
 
