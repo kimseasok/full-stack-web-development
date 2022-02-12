@@ -13,7 +13,8 @@ class ForumModel(Base, BaseModel):
     __tablename__ = "forum"
 
     title = Column(String(64))
-    descrciption = Column(String(250))
+    description = Column(String(250))
+    slush = Column(String(128))
 
     replies = relationship("ReplyModel", backref="forum", lazy=True)
 
