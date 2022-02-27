@@ -5,6 +5,7 @@ from app.routes import *
 app = Flask(__name__)
 
 all_routes = [route for name, route in globals().items() if isinstance(route, Blueprint)]
+
 for route in all_routes:
     app.register_blueprint(route)
 

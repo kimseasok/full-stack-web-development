@@ -1,0 +1,59 @@
+{% extends 'base.html' %} {% block title%} {{ title }} {% endblock%} {% block
+content %}
+<div class="col">
+  <div class="breadcrum">
+    <h1>{{ forum.title}}</h1>
+    <p>{{ forum.description}}</p>
+  </div>
+  <div class="replies">
+    <h3>Recent Topics</h3>
+    <div class="reploy-content">
+      <table class="w-100">
+        <thead>
+          <tr>
+            <td>Forum title</td>
+            <td>Description</td>
+            <td>Date</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for reply in replies %}
+          <tr>
+            <td>{{ reply.title}}</td>
+            <td>{{ reply.content }}</td>
+            <td>{{ reply.created_date }}</td>
+          </tr>
+          {% endfor%}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="reply-form">
+    <form method="post" action="">
+      <div class="form-group">
+        <label for="forum-title">Title</label>
+        <input
+          type="text"
+          name="title"
+          class="form-control"
+          id="forum-title"
+          aria-describedby="emailHelp"
+        />
+        <small id="emailHelp" class="form-text text-muted"
+          >We'll never share your email with anyone else.</small
+        >
+      </div>
+      <div class="form-group">
+        <label for="reply-content">Example textarea</label>
+        <textarea
+          class="form-control"
+          id="reply-content"
+          rows="3"
+          name="content"
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
