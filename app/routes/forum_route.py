@@ -9,7 +9,7 @@ forum_route = Blueprint("forum_route", __name__, url_prefix="/forum")
 @forum_route.route("/", methods=["GET"])
 def tag_create():
 
-    forums = [ForumModel({"title": "Programming", "descrciption": "whatever"})]
+    forums = [ForumModel({"title": "Programming", "descrciption": "whatever", "slush": "programming"})]
 
     session.add_all(forums)
 

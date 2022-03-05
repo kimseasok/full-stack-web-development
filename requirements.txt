@@ -6,4 +6,5 @@ MarkupSafe==2.0.1
 Werkzeug==1.0.1
 psycopg2-binary==2.9.3
 Flask-SQLAlchemy==2.5.1
+WTForms==3.0.1
 alembic==1.7.6

@@ -22,7 +22,7 @@ def single_forum(slush):
 
     replies = session.query(ReplyModel).filter(ReplyModel.forum_id == forum.id).all()
 
-    return render_template("single-forum.html", title=forum.title, forum=forum, replies=replies)
+    return render_template("single-forum.html", title=forum.title, forum=forum, replies=replies, reply=None)
 
 @static_route.route("/<slush>", methods=["POST"])
 def create_reply(slush):
@@ -41,6 +41,7 @@ def create_reply(slush):
     redirect_url = f"{url_for('static_route.home')}{current_forum.slush}"
 
     return redirect(redirect_url)
+
 
    
 @static_route.route("/new", methods=["GET"])

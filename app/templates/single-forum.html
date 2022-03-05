@@ -22,6 +22,12 @@ content %}
             <td>{{ reply.title}}</td>
             <td>{{ reply.content }}</td>
             <td>{{ reply.created_date }}</td>
+            <td>
+              <form action="/reply/delete/{{reply.id}}" method="post">
+                <button type="submit" class="btn btn-sm">Delete</button>
+              </form>
+            </td>
+            <td><a href="/reply/update/{{reply.id}}">edit</a></td>
           </tr>
           {% endfor%}
         </tbody>
@@ -38,6 +44,7 @@ content %}
           class="form-control"
           id="forum-title"
           aria-describedby="emailHelp"
+          value="{{reply.title}}"
         />
         <small id="emailHelp" class="form-text text-muted"
           >We'll never share your email with anyone else.</small
@@ -45,12 +52,13 @@ content %}
       </div>
       <div class="form-group">
         <label for="reply-content">Example textarea</label>
+        <p>{{reply.content}}</p>
         <textarea
           class="form-control"
           id="reply-content"
           rows="3"
           name="content"
-        ></textarea>
+        >{{reply.content}}</textarea>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
